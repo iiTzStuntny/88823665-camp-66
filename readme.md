@@ -76,7 +76,7 @@
     </style>
 </head>
 <body>
-    <h1>Workshop #HTML - FORM</h1>
+    <h1>66160360 นริช ประดิษฐ์</h1>
     <form action="#" method="post">
         <label for="firstname">ชื่อ:</label>
         <input type="text" id="firstname" name="firstname">
