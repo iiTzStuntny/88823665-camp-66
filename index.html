@@ -3,65 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workshop #HTML - FORM</title>
-    <style>
-        
-        button {
-            margin-right: 20px; 
-        }
-    </style>
+    <title>Page</title>
 </head>
 <body>
-    <h1>Workshop #HTML - FORM</h1>
-    <form action="#" method="post">
-        <label for="firstname">ชื่อ:</label>
-        <input type="text" id="firstname" name="firstname"><br><br>
-
-        <label for="lastname">สกุล:</label>
-        <input type="text" id="lastname" name="lastname"><br><br>
-
-        <label for="dob">วัน/เดือน/ปีเกิด:</label>
-        <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" title="กรุณาใส่รูปแบบ dd/mm/yyyy"><br><br>
-
-
-        <label for="age">อายุ:</label>
-        <input type="number" id="age" name="age" min="0"><br><br>
-
-        <label>เพศ:</label>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">ชาย</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">หญิง</label><br><br>
-
-        <label for="photo">รูป:</label>
-        <input type="file" id="photo" name="photo"><br><br>
-
-        <label for="address">ที่อยู่:</label>
-        <textarea id="address" name="address" rows="4" cols="50"></textarea><br><br>
-
-        <label for="color">สีที่ชอบ:</label>
-        <select id="color" name="color">
-            <option value="red">สีแดง</option>
-            <option value="blue">สีน้ำเงิน</option>
-            <option value="green">สีเขียว</option>
-        </select><br><br>
-
-        <label>แนวเพลงที่ชอบ:</label>
-        <input type="checkbox" id="forlife" name="music" value="เพื่อชีวิต">
-        <label for="forlife">เพื่อชีวิต</label>
-        <input type="checkbox" id="lukthung" name="music" value="ลูกทุ่ง">
-        <label for="lukthung">ลูกทุ่ง</label>
-        <input type="checkbox" id="other" name="music" value="อื่นๆ">
-        <label for="other">อื่นๆ</label><br><br>
-
-        <input type="checkbox" id="agree" name="agree">
-        <label for="agree">ยินยอมให้เก็บข้อมูล</label><br><br>
-
-        
-        <button type="reset">Reset</button>
-        
-        <button type="submit">Submit</button>
-        
+    <h1>Workshop # HTML - FORM</h1>
+    <form>
+    <table>
+        <tr>
+            <td>ชื่อ</td>
+            <td><input type="text" name="fname" id="fname"></td>
+        </tr>
+        <tr>
+            <td>สกุล</td>
+            <td><input type="text" name="lname" id="lname"></td>
+        </tr>
+        <tr>
+            <td>วัน/เดือน/ปีเกิด</td>
+            <td><input type="date" name="bday" id="bday"></td>
+        </tr>
+        <tr>
+            <td>อายุ</td>
+            <td><input type="text" name="lname" id="lname"></td>
+        </tr>
+        <tr>
+            <td>เพศ</td>
+            <td>
+                <input type="radio" name="1">ชาย
+                <input type="radio" name="1">หญิง
+            </td>
+        </tr>
+        <tr>
+            <td>รูป</td>
+            <td><input type="file" name="pic" id="pic"></td>
+        </tr>
+        <tr>
+            <td>ที่อยู่</td>
+            <td>
+                <textarea name="address" id="address" cols="20" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>สีที่ชอบ</td>
+            <td>
+                <select name="color" id="select" size="1">
+                    <option value="red">แดง</option>
+                    <option value="green">เขียว</option>
+                    <option value="blue">น้ำเงิน</option>
+                    <option value="yellow">เหลือง</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>เเนวเพลงที่ชอบ</td>
+            <td>
+               <input type="radio" name="2">
+                <label for="pop">เพื่อชีวิต</label>
+                <input type="radio" name="2">
+                <label for="rock">ลูกทุ่ง</label>
+                <input type="radio" name="2">
+                <label for="hiphop">อื่นๆ</label>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox">ยินยอมให้เก็บข้อมูล</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset">
+            </td>
+            <td>
+                <input type="submit">
+            </td>
+        </tr>
+    </table>
     </form>
 </body>
+<body>
+   
+</body>
+
 </html>
