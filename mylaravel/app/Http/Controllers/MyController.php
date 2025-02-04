@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-class MyController extends Controller {
-    public function index() {
-        return view('myview');
+class MyController extends Controller
+{
+    private function myprivate(){
+        return 1;
     }
-
-    public function myfunction(Request $req) {             // ถูกเรียกเมื่อผู้ใช้กด submit
-        $table = $req->input('multiplicationTable');        // รับค่าจากฟอร์ม
-        return view('myview', ['table' => $table]);  // ส่งข้อมูลไปแสดงผลใน View
+    function myfunction(Request $req, $var1 = ""){
+        $data['myinput'] =$req->input('myinput');
+        $data['myvalue'] =$var1;
+        return view('myview', $data);
     }
 }
