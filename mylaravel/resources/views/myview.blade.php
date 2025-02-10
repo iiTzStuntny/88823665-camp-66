@@ -1,56 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<div class="d-flex justify-content-center">
+    <h1> ตารางสูตรคูณ </h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name="author" content="66160084">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <main>
-
-        <div class="container">
-            <h1>Workshop #LARAVEL - FORM</h1>
-            <form action="{{url('/mycontroller')}}"
-                method="post">
-                @csrf
-                <div class="mb-3">
-                    <label for="typeNumber" class="form-label">Type a number to generate multiplication table</label>
-                    <input type="text" class="form-control" id="typeNumber" name="myinput">
-
+</div>
+<form method="post" action="{{ url('mycontroller') }}">
+    @csrf
+    <div class="d-flex justify-content-center mt-3">
+        <input type="text" name="myinput" class="p-3 bg-light bg-opacity-10 border border-black rounded me-2">
+        <button type="submit" class="btn btn-dark">submit</button>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="card border-3 border-success rounded-4" style="width: 20rem">
+            <div class="card-body">
+                @for ($i = 0; $i <= 12; $i++)
+                {{-- {{ $myinput }} * {{ $i }} = {{ $myinput * $i }} --}}
+                <div class="d-flex justify-content-between align-items-center py-2">
+                    <span class="h5 text-secondary"> {{ $myinput }} x {{ $i }}</span>
+                    <span class="h5 text-secondary"> = </span>
+                    <span class="h5 text-success"> {{ $myinput * $i }} </span>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Generate</button>
-            </form>
-
-            <div class='border mb-4'>
-                <div class=''>
-                    <h2 class=''>Mul-Table: {{$myinput}}</h2>
-                    <div class=''>
-                        <?php for ($i = 1; $i <= 12; $i++) { ?>
-
-                            <div class=''>
-                                <p class='m-0'>{{$myinput}} x {{$i}} = {{$i * $myinput}}</p>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
+            @endfor
             </div>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    </div>
 
-</body>
-
-</html>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
