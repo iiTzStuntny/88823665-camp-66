@@ -1,5 +1,4 @@
-
-@extends('layouts.default_500')
+@extends('errors::minimal')
 
 @section('title', __('Server Error'))
 @section('code', '500')

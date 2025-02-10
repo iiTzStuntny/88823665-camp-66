@@ -1,63 +1,76 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css"
+        integrity="sha256-tZHrRjVqNSRyWg2wbppGnT833E/Ys0DHWGwT04GiqQg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous" />
+    <!--
+    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
+    -->
+    <link rel="stylesheet" href="{{ url('public/css/adminlte.css') }}" />
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+    </style>
 </head>
-<body class="bg-light d-flex justify-content-center align-items-start min-vh-100 pt-5">
-    <div class="container text-center">
-        <div class="row justify-content-center align-items-center offset-md-2">
-            <!-- Left Section: Error Code (404, 500) -->
-            <div class="col-md-3 text-end">
-                <h1 class="display-1 fw-light mb-0
-                    @if(trim($__env->yieldContent('code')) == '404') text-warning
-                    @elseif(trim($__env->yieldContent('code')) == '500') text-danger
-                    @else text-secondary
-                    @endif">
-                    @yield('code')
-                </h1>
+
+<body>
+    <div class="d-flex align-items-center justify-content-center vh-100 flex-row">
+        <h1
+            class="display-1 mx-5
+            @if (trim($__env->yieldContent('code')) == '404') text-warning
+            @elseif(trim($__env->yieldContent('code')) == '500') text-danger
+            @else text-secondary @endif">
+            @yield('code')
+        </h1>
+
+        <div class="align-items-center">
+            <div class="h4">
+                @if (trim($__env->yieldContent('code')) === '404')
+                    <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                @elseif(trim($__env->yieldContent('code')) === '500')
+                    <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                @endif
+                @yield('title')
             </div>
 
-            <!-- Right Section: Error Message + Search -->
-            <div class="col-md-6 ms-0">
-                <!-- ไอคอน ⚠️ และข้อความ -->
-                <div class="d-flex align-items-center  mb-0">
-                    <span class="fs-2 me-2
-                        {{ trim($__env->yieldContent('code')) == '404' ? 'text-warning' : (trim($__env->yieldContent('code')) == '500' ? 'text-danger' : 'text-secondary') }}">
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-                    </span>
-                    <h2 class="fw-light mb-0">@yield('title')</h2>
-                </div>
+            <div class="h6">
+                @yield('message')
+                <a href="{{ url('/') }}"> return to dashboard </a>
+            </div>
 
-                <!-- ข้อความและลิงก์ -->
-                <div class="d-flex align-items-center ">
-                    <p class="text-muted mb-0 me-2">@yield('message')</p>
-                    <a href="{{ url('/') }}" class="text-primary text-decoration-underline">
-                        return to dashboard
-                    </a>
-                </div>
-
-                <!-- ช่องค้นหา -->
-                <div class="mt-3 d-flex ">
-                    <div class="input-group" style="max-width: 300px;">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn
-                            @if(trim($__env->yieldContent('code')) == '500') btn-danger
-                            @else btn-warning
-                            @endif">
-                            🔍
-                        </button>
-                    </div>
-                </div>
+            <div class="input-group mt-3">
+                <input type="text" name="search" class="form-control" placeholder="Search">
+                @if (trim($__env->yieldContent('code')) == '404')
+                    <button type="button" class="btn btn-warning">
+                        <i class="bi bi-search"></i>
+                    </button>
+                @elseif(trim($__env->yieldContent('code')) == '500')
+                    <button type="button" class="btn btn-danger">
+                        <i class="bi bi-search"></i>
+                    </button>
+                @endif
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
+        integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
+    <script src="{{ url('public/js/adminlte.js') }}"></script>
 </body>
+
 </html>
