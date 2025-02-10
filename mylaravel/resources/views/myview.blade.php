@@ -1,28 +1,28 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<div class="d-flex justify-content-center">
-    <h1> ตารางสูตรคูณ </h1>
+<head>
+    <title>my first laravel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<h1 class="text-center mt-4">ตารางสูตรคูณ</h1>
+<div class="container d-flex flex-column align-items-center mt-5">
 
-</div>
-<form method="post" action="{{ url('mycontroller') }}">
-    @csrf
-    <div class="d-flex justify-content-center mt-3">
-        <input type="text" name="myinput" class="p-3 bg-light bg-opacity-10 border border-black rounded me-2">
-        <button type="submit" class="btn btn-dark">submit</button>
-    </div>
-    <div class="d-flex justify-content-center mt-5">
-        <div class="card border-3 border-success rounded-4" style="width: 20rem">
-            <div class="card-body">
-                @for ($i = 0; $i <= 12; $i++)
-                {{-- {{ $myinput }} * {{ $i }} = {{ $myinput * $i }} --}}
-                <div class="d-flex justify-content-between align-items-center py-2">
-                    <span class="h5 text-secondary"> {{ $myinput }} x {{ $i }}</span>
-                    <span class="h5 text-secondary"> = </span>
-                    <span class="h5 text-success"> {{ $myinput * $i }} </span>
-                </div>
-            @endfor
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+        <form action="{{url('/mycontroller')}}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="myinput" class="form-label">ใส่ตัวเลข</label>
+                <input type="number" name="myinput" id="myinput" class="form-control text-center" required>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary w-100">คำนวน</button>
+        </form>
     </div>
 
-</form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- แสดงตารางสูตรคูณ --}}
+    <div class="mt-4 text-center  "style="max-width: 500px; width: 100%;">
+        <?php for($i = 1; $i <= 12; $i++) { ?>
+            <div class="alert shadow p-4 alert-secondary">
+                <h4>{{ $myinput . " x " . $i . " = " . ($myinput * $i) }}</h4>
+            </div>
+        <?php } ?>
+    </div>
+</div>

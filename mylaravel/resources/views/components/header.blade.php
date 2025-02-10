@@ -1,4 +1,5 @@
-<nav class="app-header navbar navbar-expand bg-body">
+ <!--begin::Header-->
+ <nav class="app-header navbar navbar-expand bg-body">
     <!--begin::Container-->
     <div class="container-fluid">
         <!--begin::Start Navbar Links-->
@@ -32,13 +33,14 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="{{ url('public/assets/img/user1-128x128.jpg') }}" alt="User Avatar"
+                                <img src="../../../dist/assets/img/user1-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
-                                    <span class="float-end fs-7 text-danger"><i class="bi bi-star-fill"></i></span>
+                                    <span class="float-end fs-7 text-danger"><i
+                                            class="bi bi-star-fill"></i></span>
                                 </h3>
                                 <p class="fs-7">Call me whenever you can...</p>
                                 <p class="fs-7 text-secondary">
@@ -53,7 +55,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="{{ url('public/assets/img/user8-128x128.jpg') }}" alt="User Avatar"
+                                <img src="../../../dist/assets/img/user8-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">
@@ -76,7 +78,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img src="{{ url('public/assets/img/user3-128x128.jpg') }}" alt="User Avatar"
+                                <img src="../../../dist/assets/img/user3-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 rounded-circle me-3" />
                             </div>
                             <div class="flex-grow-1">
@@ -138,14 +140,14 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="{{ url('public/assets/img/user2-160x160.jpg') }}"
+                    <img src="../../../dist/assets/img/user2-160x160.jpg"
                         class="user-image rounded-circle shadow" alt="User Image" />
                     <span class="d-none d-md-inline">Alexander Pierce</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
                     <li class="user-header text-bg-primary">
-                        <img src="{{ url('public/assets/img/user2-160x160.jpg') }}" class="rounded-circle shadow"
+                        <img src="../../../dist/assets/img/user2-160x160.jpg" class="rounded-circle shadow"
                             alt="User Image" />
                         <p>
                             Alexander Pierce - Web Developer
@@ -178,3 +180,4 @@
     </div>
     <!--end::Container-->
 </nav>
+<!--end::Header-->
