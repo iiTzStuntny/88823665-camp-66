@@ -44,3 +44,4 @@ Route::delete('/user',[UserController::class,'delete']);
 
 Route::get("/500", [HomeController::class, 'error500']);
 Route::get("/404", [HomeController::class, 'error404']);
+Route::get("/home", [HomeController::class, 'index']);

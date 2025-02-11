@@ -1,48 +1,119 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="register-page">
-    <div class="register-box">
-        <div class="register-logo">
-            <a href="../index2.html"><b>Admin</b>LTE</a>
-        </div>
-        <!-- /.register-logo -->
-        <div class="card">
-            <div class="card-body register-card-body">
-                <p class="register-box-msg">Edit new information</p>
-                <form action="{{ url('/user')}}" method="post">
-                    @csrf
-                    @method('put')
-                    <input type="hidden" name="id" value="{{$user -> id}}">
-                    <div class="input-group mb-3">
-                        <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{$user->name}}" />
-                        <div class="input-group-text"><span class="bi bi-person"></span></div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{$user->email}}" />
-                        <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" />
-                        <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-                    </div>
-                    <!--begin::Row-->
-                    <div class="row">
+    <div class="layout-fixed sidebar-expand=lg">
+        <div class="app-wrapper">
 
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">submit</button>
+            @include('components.header')
+            @include('components.menu')
+
+            <main class="app-main">
+                <!--begin::App Content header-->
+                <div class="app-content-header">
+                    <!--begin::Container-->
+                    <div class="container-fluid">
+                        <!--begin::Row -->
+                        <div class="row">
+                            <div class="col-sm-12"><h3 class="mb-0"> User Tables </h3></div>
+                                <div class="col-sm-12">
+                                    <ol class="breadcrumb float-sm-end">
+                                        <li class="breadcrumb-item"><a href="#"> Home </a></li>
+                                        <li class="breadcrumb-item active" aria-current="page"> User Tables </li>
+                                    </ol>
                             </div>
                         </div>
-                        <!-- /.col -->
+                        <!--end::Row-->
                     </div>
-                    <!--end::Row-->
-                </form>
-                <!-- /.social-auth-links -->
-            </div>
-            <!-- /.register-card-body -->
+                    <!--end:;Container-->
+                </div>
+                <!--end::App Content Header-->
+                <!--begin::App Content-->
+                <div class="app-content">
+                    <!--begin::Container-->
+                    <div class="container-fluid">
+                        <!--begin::Row-->
+                        <div class="Row">
+                            <div class="col-md-12">
+                                <div class="card mb-12">
+                                    <div class="card-header"><h3 class="card-title"> User Tables </h3></div>
+                                    <!--/.card-header-->
+                                    <div class="card-body">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px"> # </th>
+                                                    <th> Name </th>
+                                                    <th> Email </th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($users as $index => $user) { ?>
+                                                    <tr class="align-middle">
+                                                        <td>{{ $index + 1}}.</td>
+                                                        <td>{{ $user->name }}</td>
+                                                        <td>{{ $user->email}}</td>
+                                                        <td>
+                                                            <a href="{{ url('/user/'.$user->id) }}">
+                                                            <button class="btn btn-warning"> Edit </button>
+                                                            </a>
+                                                            <form action="{{ url('user') }}" onsubmit="clickme(event)" method="post" style="display:inline">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <input type="hidden" name="id" value="{{$user->id}}">
+                                                                <button class="btn btn-danger" type="submit"> Delete </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--/.card-body-->
+                                    <div class="card-footer clearfix">
+                                        <ul class="pagination pagination-sm m-0 float-end">
+                                            <li class="page-item"><a class="page-link" href="#"> $laquo;</a></li>
+                                            <li class="page-item"><a class="page-link" href="#"> 1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#"> 2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#"> 3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#"> $raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--/.card-->
+                            </div>
+                            <!--/.col-->
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::App Content-->
+            </main>
+            @include('components.footer')
         </div>
     </div>
-</div>
+@endsection
+
+@section('scripts')
+<script>
+    function clickme(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure',
+            text: 'delete it or not?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            event.target.submit(); // ให้ฟอร์มส่งข้อมูลเมื่อกดยืนยัน
+        }
+    });
+}
+    $(document).ready(function(){
+    });
+</script>
 @endsection
