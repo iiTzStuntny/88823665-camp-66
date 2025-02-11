@@ -33,7 +33,7 @@
                             <input type="password" name="password" id="password" oninput="return checkPassword();" class="form-control" placeholder="Password" />
                             <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
                             <div class="valid-feedback">
-                                รหัสผ่านปลอดภัยมาก เยี่ยมจริงๆ
+                                รหัสผ่านของท่านปลอดภัยมาก
                             </div>
                             <div class="invalid-feedback">
                                 กรุณาระบุรหัสผ่าน หรือ รหัสผ่าน ต้องมีตัวพิมพ์เล็กพิมพ์ใหญ่อย่างน้อย 8 ตัวอักษร
